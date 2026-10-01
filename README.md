@@ -17,10 +17,14 @@ When you press send, the extension checks the message first:
 | Private keys, API tokens, AWS access keys | **Blocked.** No override; change the content and send again |
 | Card numbers, US bank routing numbers, US Social Security numbers | **Asks you first.** Confirming sends it this once only |
 | Uploaded text files | Checked the same way |
-| Files whose content can't be checked (images, PDFs, ...) | Asks whether to send them unchecked |
-| The extension itself fails | **Nothing is sent**, to be safe |
+| Files whose content can't be checked (images, PDFs, ...) | Sent as usual, without a card; listed under Recent as "uploaded without checking" |
+| The extension itself fails, or can't read what the site sends | Sent as usual, **without checking**; the shield turns amber and Recent lists it |
 
-The toolbar shield: **green** = protection is on; **red** = protection is unavailable and nothing is sent; **grey** = starting.
+The rule: the extension stops or asks you only when it actually finds something. When it can't do its own job, your message goes out as if the extension weren't installed, and it says so honestly instead of interrupting you. If you prefer "hold anything that can't be checked", choose the **Strict** usage style in Settings: files that can't be checked are asked about first, and nothing is sent while protection isn't working.
+
+The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking; **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
+
+> **Changed in v0.1.3-dev (the next build).** v0.1.2-dev and earlier still ask before sending a file that can't be checked and send nothing when the extension fails (red shield).
 
 ## Your data
 
@@ -48,8 +52,9 @@ Desktop Chrome. Edge and other Chromium-based browsers usually work too: turn on
 
 - **Development signing:** the rule packs are signed with public development keys. That detects corruption, not deliberate tampering. A release build will use publisher keys.
 - **False positives are possible**, e.g. some 9-digit numbers may look like an SSN.
-- **Only the two sites above**, and only messages sent from the web page. A site redesign can leave some way of sending unchecked for a while (the extension tries to say "couldn't confirm it was checked").
-- The usage styles (Quiet / Standard / Strict) behave the same with today's rules.
+- **Only the two sites above**, and only messages sent from the web page. A site redesign can leave some way of sending unchecked for a while; when the extension notices, the popup says so for that tab.
+- **While a site has changed its format, or the extension isn't working, messages go out unchecked** (except in Strict). You see it on the shield and in the popup, not on the page.
+- The usage styles: a real finding is blocked or asked about the same way in all three; only Strict holds what the extension can't check.
 - The UI follows Chrome's display language (English or Chinese).
 - **Other extensions are not watched.** This extension checks what these two sites send to the AI service. It can't see or stop another browser extension that reads the page and sends data out from its own background -- Chrome doesn't let one extension see another's network requests. That is the job of your anti-malware software and of installing only extensions you trust (in a company, usually an extension allowlist).
 
