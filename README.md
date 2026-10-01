@@ -51,6 +51,7 @@ Desktop Chrome. Edge and other Chromium-based browsers usually work too: turn on
 - **Only the two sites above**, and only messages sent from the web page. A site redesign can leave some way of sending unchecked for a while (the extension tries to say "couldn't confirm it was checked").
 - The usage styles (Quiet / Standard / Strict) behave the same with today's rules.
 - The UI follows Chrome's display language (English or Chinese).
+- **Other extensions are not watched.** This extension checks what these two sites send to the AI service. It can't see or stop another browser extension that reads the page and sends data out from its own background -- Chrome doesn't let one extension see another's network requests. That is the job of your anti-malware software and of installing only extensions you trust (in a company, usually an extension allowlist).
 
 ## Feedback
 
