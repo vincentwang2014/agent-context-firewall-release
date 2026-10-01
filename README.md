@@ -22,14 +22,18 @@ When you press send, the extension checks the message first:
 
 The rule: the extension stops or asks you only when it actually finds something. When it can't do its own job, your message goes out as if the extension weren't installed, and it says so honestly instead of interrupting you. If you prefer "hold anything that can't be checked", choose the **Strict** usage style in Settings: files that can't be checked are asked about first, and nothing is sent while protection isn't working.
 
-The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking; **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
+It reads only what you send: the message you typed and the files you upload, at the site's own send and upload addresses. The site's other traffic (analytics, settings, your avatar) is left alone.
 
-> **Changed in v0.1.3-dev (the next build).** v0.1.2-dev and earlier still ask before sending a file that can't be checked and send nothing when the extension fails (red shield).
+The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking (amber on a single tab: on that page, a message or a file you added didn't go out the way the extension recognises, so it can't confirm it was checked -- the popup says which); **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
+
+> **Changed in v0.1.4-dev.** Only your message and your files are read (before, other requests to the site were checked too, which caused the stray "unknown upload" cards on ChatGPT). The per-tab amber shield is new. Recent no longer lists every ordinary send.
+>
+> **Changed in v0.1.3-dev.** Before it, the extension asked before sending a file that can't be checked and sent nothing when it failed (red shield).
 
 ## Your data
 
 - **All checking happens on your computer.** In this version the extension sends nothing anywhere; it only reads files inside its own package.
-- It keeps on this device only: the **time, site, result and category** of the last 10 events (for example "Blocked (credentials)"), and your chosen usage style. **Message content is never stored.**
+- It keeps on this device only: the **time, site, result and category** of the last 10 events (for example "Blocked (credentials)"; ordinary sends with nothing found are not listed), and your chosen usage style. **Message content is never stored.**
 - Confirmations live in the browser session and are cleared when the browser closes.
 - Removing the extension removes all of the above.
 
