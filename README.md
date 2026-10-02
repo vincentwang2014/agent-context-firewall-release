@@ -26,6 +26,8 @@ It reads only what you send: the message you typed and the files you upload, at 
 
 The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking (amber on a single tab: on that page, a message or a file you added didn't go out the way the extension recognises, so it can't confirm it was checked, or the page was open before the extension was installed or updated and needs a refresh -- the popup says which); **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
 
+> **Changed in v0.1.8-dev.** On DeepSeek, editing a sent message and sending it again is now checked like a new message; before, an edited message went out unchecked. When you edit, files you already sent from that page can stay attached. After an install or update, a page that was already open shows its amber shield right away, even while the extension is still starting.
+>
 > **Changed in v0.1.7-dev.** Gemini is supported. The confirmation card's "Cancel" button now stays readable on dark pages.
 >
 > **Changed in v0.1.6-dev.** DeepSeek is supported: messages and uploaded files are checked the same way as on the other sites. DeepSeek works in mainland China without a VPN.
