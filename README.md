@@ -24,8 +24,10 @@ The rule: the extension stops or asks you only when it actually finds something.
 
 It reads only what you send: the message you typed and the files you upload, at the site's own send and upload addresses. The site's other traffic (analytics, settings, your avatar) is left alone.
 
-The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking (amber on a single tab: on that page, a message or a file you added didn't go out the way the extension recognises, so it can't confirm it was checked -- the popup says which); **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
+The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking (amber on a single tab: on that page, a message or a file you added didn't go out the way the extension recognises, so it can't confirm it was checked, or the page was open before the extension was installed or updated and needs a refresh -- the popup says which); **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
 
+> **Changed in v0.1.5-dev.** After an install or update, pages that were already open no longer get a notice drawn on them: their tab's shield turns amber and the popup asks you to refresh. The extension no longer asks for the permission to run scripts in pages. Updating from v0.1.4-dev, a page still open from before may show the old refresh notice one last time.
+>
 > **Changed in v0.1.4-dev.** Only your message and your files are read (before, other requests to the site were checked too, which caused the stray "unknown upload" cards on ChatGPT). The per-tab amber shield is new. Recent no longer lists every ordinary send.
 >
 > **Changed in v0.1.3-dev.** Before it, the extension asked before sending a file that can't be checked and sent nothing when it failed (red shield).
