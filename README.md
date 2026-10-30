@@ -1,82 +1,34 @@
-# Agent Context Firewall (browser extension, development preview)
+# Agent Context Firewall
 
 [中文](README.zh-CN.md)
 
-Checks what you are about to send to an AI, on your own computer, before it is sent: keys and private keys are stopped; personal information such as social security or card numbers is sent only after you confirm.
+Checks what your AI tools are about to send, on your own computer, before it is sent. When it finds something that shouldn't leave your computer, such as a key, a password or a card number, it blocks it or asks you first. Nothing you write or open is sent to us or anyone else.
 
-> **Development preview.** For feedback, not as your only protection.
+This repository has downloads only (no source code).
 
-## What it does
+## Two parts
 
-Supported sites: **claude.ai**, **ChatGPT** (chatgpt.com) **DeepSeek** (chat.deepseek.com, from v0.1.6-dev) and **Gemini** (gemini.google.com, from v0.1.7-dev).
+| Part | For | Get it |
+|---|---|---|
+| **ACF for AI tools** (Windows) | Claude Code, Codex (command line and desktop), WorkBuddy: your messages, what is handed to subtasks, what the AI reads, outgoing commands | **0.4.0-beta.1**, see [Releases](../../releases) |
+| **ACF browser extension** | AI websites: claude.ai, ChatGPT, DeepSeek, Gemini: the message you send and the text files you upload | [Chrome Web Store](https://chromewebstore.google.com/detail/pjghhjaabjmjfbnllcgnidmfpgecgfbk) (also installable in Edge) |
 
-When you press send, the extension checks the message first:
-
-| Found | What happens |
-|---|---|
-| Private keys, API tokens, AWS access keys | **Blocked.** No override; change the content and send again |
-| Card numbers, US bank routing numbers, US Social Security numbers | **Asks you first.** Confirming sends it this once only |
-| Uploaded text files | Checked the same way |
-| Files whose content can't be checked (images, PDFs, ...) | Sent as usual, without a card; listed under Recent as "uploaded without checking" |
-| The extension itself fails, or can't read what the site sends | Sent as usual, **without checking**; the shield turns amber and Recent lists it |
-
-The rule: the extension stops or asks you only when it actually finds something. When it can't do its own job, your message goes out as if the extension weren't installed, and it says so honestly instead of interrupting you. If you prefer "hold anything that can't be checked", choose the **Strict** usage style in Settings: files that can't be checked are asked about first, and nothing is sent while protection isn't working.
-
-It reads only what you send: the message you typed and the files you upload, at the site's own send and upload addresses. The site's other traffic (analytics, settings, your avatar) is left alone.
-
-The toolbar shield: **green** = protection is on; **amber** = protection isn't working right now, messages are sent without checking (amber on a single tab: on that page, a message or a file you added didn't go out the way the extension recognises, so it can't confirm it was checked, or the page was open before the extension was installed or updated and needs a refresh -- the popup says which); **red** = the same in the Strict style, where nothing is sent; **grey** = starting.
-
-> **Changed in v0.1.8-dev.** On DeepSeek, editing a sent message and sending it again is now checked like a new message; before, an edited message went out unchecked. When you edit, files you already sent from that page can stay attached. After an install or update, a page that was already open shows its amber shield right away, even while the extension is still starting.
+> **Beta.** 0.4.0-beta.1 is an early test version without a Microsoft code signature; Windows and antivirus software may warn you. It is for friends who are willing to test it and send feedback, not as your only protection. Read `README_en.txt` in the release before installing.
 >
-> **Changed in v0.1.7-dev.** Gemini is supported. The confirmation card's "Cancel" button now stays readable on dark pages.
->
-> **Changed in v0.1.6-dev.** DeepSeek is supported: messages and uploaded files are checked the same way as on the other sites. DeepSeek works in mainland China without a VPN.
->
-> **Changed in v0.1.5-dev.** After an install or update, pages that were already open no longer get a notice drawn on them: their tab's shield turns amber and the popup asks you to refresh. The extension no longer asks for the permission to run scripts in pages. Updating from v0.1.4-dev, a page still open from before may show the old refresh notice one last time.
->
-> **Changed in v0.1.4-dev.** Only your message and your files are read (before, other requests to the site were checked too, which caused the stray "unknown upload" cards on ChatGPT). The per-tab amber shield is new. Recent no longer lists every ordinary send.
->
-> **Changed in v0.1.3-dev.** Before it, the extension asked before sending a file that can't be checked and sent nothing when it failed (red shield).
+> This beta is for Windows only (Windows 10 / 11). macOS and Linux versions are in preparation; we'll announce them when they're ready.
 
-## Your data
+## What happens when ACF finds something
 
-- **All checking happens on your computer.** In this version the extension sends nothing anywhere; it only reads files inside its own package.
-- It keeps on this device only: the **time, site, result and category** of the last 10 events (for example "Blocked (credentials)"; ordinary sends with nothing found are not listed), and your chosen usage style. **Message content is never stored.**
-- Confirmations live in the browser session and are cleared when the browser closes.
-- Removing the extension removes all of the above.
-
-## Install
-
-Desktop Chrome. Edge and other Chromium-based browsers usually work too: turn on developer mode on their extensions page and load the unpacked folder; the menu names differ slightly.
-
-1. Download the latest `acf-browser-….zip` from [Releases](../../releases).
-2. (Optional) Check it: the zip's SHA-256 must equal the last line of the `.SHA256SUMS` file in the same release.
-   Windows: `certutil -hashfile acf-browser-….zip SHA256`; macOS / Linux: `shasum -a 256 acf-browser-….zip`
-3. Unzip it.
-4. Open `chrome://extensions` and turn on **Developer mode** (top right).
-5. Click **Load unpacked** and choose the unzipped folder (the one containing `manifest.json`).
-6. Refresh any claude.ai / ChatGPT tabs already open.
-7. Pin the shield via the puzzle-piece icon and check it is green.
-
-**Remove:** click **Remove** in `chrome://extensions`.
-
-## Known limits
-
-- **Development signing:** the rule packs are signed with public development keys. That detects corruption, not deliberate tampering. A release build will use publisher keys.
-- **False positives are possible**, e.g. some 9-digit numbers may look like an SSN.
-- **Only the two sites above**, and only messages sent from the web page. A site redesign can leave some way of sending unchecked for a while; when the extension notices, the popup says so for that tab.
-- **While a site has changed its format, or the extension isn't working, messages go out unchecked** (except in Strict). You see it on the shield and in the popup, not on the page.
-- The usage styles: a real finding is blocked or asked about the same way in all three; only Strict holds what the extension can't check.
-- The UI follows Chrome's display language (English or Chinese).
-- **Other extensions are not watched.** This extension checks what these two sites send to the AI service. It can't see or stop another browser extension that reads the page and sends data out from its own background -- Chrome doesn't let one extension see another's network requests. That is the job of your anti-malware software and of installing only extensions you trust (in a company, usually an extension allowlist).
+- **Blocked:** keys, private keys and similar secrets are not sent; the AI tool's conversation (or the page) says why.
+- **Asks you first:** for things such as card numbers, ACF shows its own confirmation window; only your click lets it through.
+- **What ACF can't see** (desktop chat apps, AI agents running in a vendor's cloud, images and PDFs) is listed honestly in the tester notes and the Control Panel.
 
 ## Feedback
 
-Please tell us about:
+Email agent.context.firewall@gmail.com. In the Control Panel, "Pack logs to send us" creates a file you can attach; it holds ACF's check records only, never your conversations or file contents.
 
-- **False positives:** something blocked that shouldn't be -- what kind of content (please don't send the real sensitive data itself) and which site;
-- **Misses:** something that should have been stopped and wasn't;
-- **The UI:** anything unclear or awkward;
-- the version: `commit` in `BUILD_INFO.json` in the unzipped folder.
+Privacy policy: [read it](https://vincentwang2014.github.io/acf-privacy/).
 
-How to send feedback: contact the person who sent you this link.
+## Older downloads
+
+The `v0.1.x-dev` releases are early development previews of the browser extension, kept for reference. Please use the Chrome Web Store version instead.
