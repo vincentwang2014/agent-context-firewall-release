@@ -10,10 +10,12 @@
 
 | 部分 | 检查什么 | 怎么获取 |
 |---|---|---|
-| **ACF（AI 工具版，Windows）** | Claude Code、Codex（命令行版和桌面版）、WorkBuddy：你发的消息、交给子任务的内容、AI 读到的内容、往外发的命令 | **0.4.0-beta.1**，见 [Releases](../../releases) |
+| **ACF（AI 工具版，Windows）** | Claude Code、Codex（命令行版和桌面版）、WorkBuddy：你发的消息、交给子任务的内容、AI 读到的内容、往外发的命令 | **[0.4.0-beta.2](https://github.com/vincentwang2014/agent-context-firewall-release/releases/tag/v0.4.0-beta.2)**（点这里下载） |
 | **ACF 浏览器扩展** | 网页版 AI：claude.ai、ChatGPT、DeepSeek、Gemini：你发出的消息和上传的文本文件 | [Chrome 应用商店](https://chromewebstore.google.com/detail/pjghhjaabjmjfbnllcgnidmfpgecgfbk)（Edge 也能装） |
 
-> **测试版。** 0.4.0-beta.1 是早期测试版，没有微软代码签名，Windows 和杀毒软件可能会提示风险。只建议愿意帮我们测试、反馈问题的朋友安装，不要把它当作唯一的防护。安装前请先看 Release 里的 `README_zh.txt`。
+> **测试版。** 0.4.0-beta.2 是早期测试版，没有微软代码签名，Windows 和杀毒软件可能会提示风险。只建议愿意帮我们测试、反馈问题的朋友安装，不要把它当作唯一的防护。安装前请先看 Release 里的 `README_zh.txt`。
+>
+> **装过 0.4.0-beta.1？** 请先卸载它（设置 → 应用 → 已安装的应用 → Agent Context Firewall → 卸载），再运行新的 `ACF-Setup.exe`。beta.1 已过时。
 >
 > 这个测试版只有 Windows 版（Windows 10 / 11）。macOS 和 Linux 版正在准备，发布时会另行通知。
 

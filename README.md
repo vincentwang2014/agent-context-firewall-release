@@ -10,10 +10,12 @@ This repository has downloads only (no source code).
 
 | Part | For | Get it |
 |---|---|---|
-| **ACF for AI tools** (Windows) | Claude Code, Codex (command line and desktop), WorkBuddy: your messages, what is handed to subtasks, what the AI reads, outgoing commands | **0.4.0-beta.1**, see [Releases](../../releases) |
+| **ACF for AI tools** (Windows) | Claude Code, Codex (command line and desktop), WorkBuddy: your messages, what is handed to subtasks, what the AI reads, outgoing commands | **[0.4.0-beta.2](https://github.com/vincentwang2014/agent-context-firewall-release/releases/tag/v0.4.0-beta.2)** (download here) |
 | **ACF browser extension** | AI websites: claude.ai, ChatGPT, DeepSeek, Gemini: the message you send and the text files you upload | [Chrome Web Store](https://chromewebstore.google.com/detail/pjghhjaabjmjfbnllcgnidmfpgecgfbk) (also installable in Edge) |
 
-> **Beta.** 0.4.0-beta.1 is an early test version without a Microsoft code signature; Windows and antivirus software may warn you. It is for friends who are willing to test it and send feedback, not as your only protection. Read `README_en.txt` in the release before installing.
+> **Beta.** 0.4.0-beta.2 is an early test version without a Microsoft code signature; Windows and antivirus software may warn you. It is for friends who are willing to test it and send feedback, not as your only protection. Read `README_en.txt` in the release before installing.
+>
+> **Installed 0.4.0-beta.1?** Uninstall it first (Settings → Apps → Installed apps → Agent Context Firewall → Uninstall), then run the new `ACF-Setup.exe`. beta.1 is outdated.
 >
 > This beta is for Windows only (Windows 10 / 11). macOS and Linux versions are in preparation; we'll announce them when they're ready.
 
