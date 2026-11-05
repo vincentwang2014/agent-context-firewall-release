@@ -17,10 +17,20 @@ With AI tools, a data leak often needs no attacker. Once a log containing a key 
 
 ## Coverage
 
-| Product | Protects | Runs on |
+**Supported**
+
+| Type | Product | Runs on |
 |---|---|---|
-| **ACF** | Claude Code, Codex, WorkBuddy | Windows 10 / 11, Linux (Debian/Ubuntu-family desktops), macOS 13 or later |
-| **ACF browser extension** | Web claude.ai, ChatGPT, DeepSeek, Gemini: the messages you send and the text files you upload | Chrome, Edge |
+| AI coding tools | Claude Code, Codex | Windows 10 / 11, Linux (Debian/Ubuntu-family desktops), macOS 13 or later |
+| Desktop AI assistant | WorkBuddy | Windows 10 / 11, macOS 13 or later |
+| Web AI | claude.ai, ChatGPT, DeepSeek, Gemini: messages you send and text files you upload | Chrome, Edge (browser extension) |
+
+**Planned** (subject to change; what ships is what counts)
+
+- OpenClaw
+- Desktop chat apps (being explored)
+
+Need another AI tool supported? [Tell us](mailto:agent.context.firewall@gmail.com).
 
 ## Scope and limits
 
