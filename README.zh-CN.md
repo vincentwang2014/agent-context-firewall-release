@@ -55,7 +55,7 @@
 |---|---|
 | **Windows 10 / 11** | 下载 `ACF-Setup.exe` 并运行。安装包暂无微软代码签名，系统可能提示风险。 |
 | **macOS 13 及以上** | 下载 `.pkg`，双击安装，输入管理员密码。在终端运行 `acf panel` 打开控制面板。 |
-| **Linux（Debian/Ubuntu 系桌面）** | 下载 `acf-0.4.0-beta.3-linux-amd64.tar.gz`，解压后在文件夹里运行 `sh install.sh`，它会先校验签名再安装。在终端运行 `acf panel` 打开控制面板。 |
+| **Linux（Debian/Ubuntu 系桌面）** | 下载 `acf-0.4.0-beta.3-linux-amd64.run`，在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.3-linux-amd64.run`。它会校验签名、安装，并打开控制面板。之后在终端运行 `acf panel` 打开。 |
 
 如已安装旧版，请先卸载。
 
