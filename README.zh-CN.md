@@ -17,10 +17,20 @@
 
 ## 支持范围
 
-| 产品 | 保护对象 | 运行环境 |
+**已支持**
+
+| 类型 | 产品 | 运行环境 |
 |---|---|---|
-| **ACF** | Claude Code、Codex、WorkBuddy | Windows 10 / 11、Linux（Debian/Ubuntu 系桌面）、macOS 13 及以上 |
-| **ACF 浏览器扩展** | 网页版 claude.ai、ChatGPT、DeepSeek、Gemini：你发的消息和上传的文本文件 | Chrome、Edge |
+| AI 编程工具 | Claude Code、Codex | Windows 10 / 11、Linux（Debian/Ubuntu 系桌面）、macOS 13 及以上 |
+| 桌面 AI 助手 | WorkBuddy | Windows 10 / 11、macOS 13 及以上 |
+| 网页版 AI | claude.ai、ChatGPT、DeepSeek、Gemini：发送的消息和上传的文本文件 | Chrome、Edge（浏览器扩展） |
+
+**计划支持**（计划中，以实际发布为准）
+
+- OpenClaw
+- 桌面聊天 App（探索中）
+
+需要支持其他 AI 工具？请[告诉我们](mailto:agent.context.firewall@gmail.com)。
 
 ## 适用边界
 
