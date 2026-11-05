@@ -39,6 +39,16 @@ Browser extension: [Chrome Web Store](https://chromewebstore.google.com/detail/p
 
 This repository holds downloads only, not source code.
 
+## Install
+
+| System | Steps |
+|---|---|
+| **Windows 10 / 11** | Download `ACF-Setup.exe` and run it. It has no Microsoft code signature yet, so Windows may warn you. |
+| **macOS 13 or later** | Download the `.pkg`, double-click it and enter your administrator password. Run `acf panel` in a terminal to open the control panel. |
+| **Linux (Debian/Ubuntu-family desktops)** | Download `acf-0.4.0-beta.3-linux-amd64.tar.gz`, unpack it and run `sh install.sh` in the folder. It checks the signatures, then installs. Run `acf panel` in a terminal to open the control panel. |
+
+If an older version is installed, uninstall it first.
+
 ## Feedback
 
 Email agent.context.firewall@gmail.com. "Pack logs to send us" in the control panel makes a file you can attach. It holds only ACF's inspection records, not your conversations or files.
