@@ -10,20 +10,31 @@ This repository has downloads only (no source code).
 
 | Part | For | Get it |
 |---|---|---|
-| **ACF for AI tools** (Windows) | Claude Code, Codex (command line and desktop), WorkBuddy: your messages, what is handed to subtasks, what the AI reads, outgoing commands | **[0.4.0-beta.2](https://github.com/vincentwang2014/agent-context-firewall-release/releases/tag/v0.4.0-beta.2)** (download here) |
+| **ACF for AI tools** (Windows, Linux, macOS) | Claude Code, Codex, WorkBuddy: your messages, what is handed to subtasks, what the AI reads, outgoing commands | **[0.4.0-beta.3](../../releases/tag/v0.4.0-beta.3)**, see below for each system |
 | **ACF browser extension** | AI websites: claude.ai, ChatGPT, DeepSeek, Gemini: the message you send and the text files you upload | [Chrome Web Store](https://chromewebstore.google.com/detail/pjghhjaabjmjfbnllcgnidmfpgecgfbk) (also installable in Edge) |
 
-> **Beta.** 0.4.0-beta.2 is an early test version without a Microsoft code signature; Windows and antivirus software may warn you. It is for friends who are willing to test it and send feedback, not as your only protection. Read `README_en.txt` in the release before installing.
->
-> **Installed 0.4.0-beta.1?** Uninstall it first (Settings → Apps → Installed apps → Agent Context Firewall → Uninstall), then run the new `ACF-Setup.exe`. beta.1 is outdated.
->
-> This beta is for Windows only (Windows 10 / 11). macOS and Linux versions are in preparation; we'll announce them when they're ready.
+> **Beta.** 0.4.0-beta.3 is an early test version. It is for friends who are willing to test it and send feedback, not as your only protection. Read the release notes and known limitations on the [release page](../../releases/tag/v0.4.0-beta.3) before installing.
+
+## Get it for your system
+
+All three are on the [0.4.0-beta.3 release page](../../releases/tag/v0.4.0-beta.3).
+
+**Windows 10 / 11.** Download `ACF-Setup.exe` and run it. If an older ACF is installed, uninstall it first. It has no Microsoft code signature yet, so Windows and antivirus software may warn you. ACF and its rule packs update by themselves.
+
+**Linux (Debian/Ubuntu-family desktops).** Download the `acf` and `acf-panel-runtime` `.deb` packages, their `.asc` signatures, `verify_deb_gpgv.sh` and `acf-linux-deb-release-keyring.gpg`. Check each package with `./verify_deb_gpgv.sh PACKAGE.deb PACKAGE.deb.asc`, then install both with `sudo apt install ./acf-panel-runtime_*.deb ./acf_*.deb`. Open the control panel with `acf panel` in a terminal. To update, install a new package.
+
+The packages are signed with our Linux OpenPGP release key:
+
+- Primary key: `C66A95EDE3C9A2ECF569D43216B5E948DEDC6180`
+- Signing subkey: `A72107565CE6F382964F9EAEB52235D40CC4CD23`
+
+**macOS 13 or later (Apple chip or Intel; tested on an Apple chip only).** Download the signed `.pkg`, open it and enter your administrator password. Open the control panel with `acf panel` in a terminal. To update, run `acf uninstall`, then open the new package.
 
 ## What happens when ACF finds something
 
 - **Blocked:** keys, private keys and similar secrets are not sent; the AI tool's conversation (or the page) says why.
-- **Asks you first:** for things such as card numbers, ACF shows its own confirmation window; only your click lets it through.
-- **What ACF can't see** (desktop chat apps, AI agents running in a vendor's cloud, images and PDFs) is listed honestly in the tester notes and the Control Panel.
+- **Asks you first:** for things such as card numbers, on Windows ACF shows its own confirmation window; only your click lets it through. On Linux and macOS that window isn't built yet: Claude Code asks in its own dialog before a tool runs, and everything else is blocked.
+- **What ACF can't see** (desktop chat apps, AI agents running in a vendor's cloud, images and PDFs) is listed honestly in the known limitations and the Control Panel.
 
 ## Feedback
 
