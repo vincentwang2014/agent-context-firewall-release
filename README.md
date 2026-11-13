@@ -39,11 +39,11 @@ Need another AI tool supported? [Tell us](mailto:agent.context.firewall@gmail.co
 - **Content not covered:** text in images and PDFs isn't checked, and desktop chat apps aren't covered yet.
 - **Positioning:** ACF is one layer of protection, not the only one to rely on.
 
-All known gaps are listed in the [known limitations](../../releases/tag/v0.4.0-beta.4), and the control panel shows "Not covered yet" where that applies.
+All known gaps are listed in the [known limitations](../../releases/tag/v0.4.0-beta.5), and the control panel shows "Not covered yet" where that applies.
 
 ## Download
 
-**Current version: [0.4.0-beta.4](../../releases/tag/v0.4.0-beta.4) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
+**Current version: [0.4.0-beta.5](../../releases/tag/v0.4.0-beta.5) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
 
 Browser extension: [Chrome Web Store](https://chromewebstore.google.com/detail/pjghhjaabjmjfbnllcgnidmfpgecgfbk).
 
@@ -55,7 +55,7 @@ This repository holds downloads only, not source code.
 |---|---|
 | **Windows 10 / 11** | Download `ACF-Setup.exe` and run it. It has no Microsoft code signature yet, so Windows may warn you. |
 | **macOS 13 or later** | Download the `.pkg`, double-click it and enter your administrator password. The control panel opens afterwards; later, open ACF Control Panel from Launchpad or run `acf panel` in a terminal. |
-| **Linux (Debian/Ubuntu-family desktops)** | Download `acf-0.4.0-beta.4-linux-amd64.run`, open a terminal in the download folder and run `sh acf-0.4.0-beta.4-linux-amd64.run`. It checks the signatures, installs, and opens the control panel. Afterwards, run `acf panel` in a terminal to open it. |
+| **Linux (Debian/Ubuntu-family desktops)** | Download `acf-0.4.0-beta.5-linux-amd64.run`, open a terminal in the download folder and run `sh acf-0.4.0-beta.5-linux-amd64.run`. It checks the signatures, installs, and opens the control panel. Afterwards, run `acf panel` in a terminal to open it. |
 
 If an older version is installed, just install over it: it is updated and your settings are kept.
 
