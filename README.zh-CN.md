@@ -80,7 +80,7 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 
 | 系统 | 下载 | 安装 |
 |---|---|---|
-| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | 运行它。安装程序经微软 Artifact Signing 签名，发布者为 “Meng Wang”。 |
+| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | 运行它。安装程序由发布者“Meng Wang”通过 Microsoft Artifact Signing 签名。 |
 | macOS 13 及以上 | [acf-0.4.0-beta.6-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-mac-universal.pkg) | 双击，按提示操作，输入管理员密码。安装包经过 Apple 公证。 |
 | Linux（amd64） | [acf-0.4.0-beta.6-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-linux-amd64.run) | 在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.6-linux-amd64.run`。它先核对签名，再安装。 |
 
