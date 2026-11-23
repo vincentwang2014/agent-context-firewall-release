@@ -57,7 +57,7 @@ Also:
 - A program you allow to run as administrator can turn ACF off; that is true of any security software on the computer.
 - ACF is one layer of protection, not the only one to rely on.
 
-The full list is in the [known limitations](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/KNOWN_LIMITATIONS_en.md); each entry says what it means for you and what you can do.
+The full list is in the [known limitations](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/KNOWN_LIMITATIONS_en.md); each entry says what it means for you and what you can do.
 
 ## Supported AI tools and systems
 
@@ -69,20 +69,20 @@ The full list is in the [known limitations](https://github.com/vincentwang2014/a
 
 Web AI (claude.ai, ChatGPT, DeepSeek, Gemini): the ACF browser extension for Chrome and Edge checks the messages you send and the text files you upload.
 
-- ACF's ask window exists only on Windows so far. On Linux and macOS, when a rule asks the user (including commands that need administrator rights), Claude Code asks in its own dialog in permission modes that confirm; otherwise the content is mostly blocked instead and the conversation says why.
+- ACF's ask window works on Windows, macOS and Linux. When nobody is at the screen (for example an AI tool running over SSH), the content is blocked instead and the conversation says why.
 - The macOS version has been tested only on macOS 14 on Apple chips so far.
 
 Planned: OpenClaw and others. Need another AI tool supported? [Tell us](mailto:agent.context.firewall@gmail.com).
 
 ## Download and install
 
-**Current version: [0.4.0-beta.5](../../releases/tag/v0.4.0-beta.5) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
+**Current version: [0.4.0-beta.6](../../releases/tag/v0.4.0-beta.6) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
 
 | System | Download | Install |
 |---|---|---|
-| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/ACF-Setup.exe) | Run it. It has no Microsoft code signature yet, so Windows may warn you. |
-| macOS 13 or later | [acf-0.4.0-beta.5-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/acf-0.4.0-beta.5-mac-universal.pkg) | Double-click it, follow the steps and enter an administrator password. The package is notarized by Apple. |
-| Linux (amd64) | [acf-0.4.0-beta.5-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/acf-0.4.0-beta.5-linux-amd64.run) | Open a terminal in the download folder and run `sh acf-0.4.0-beta.5-linux-amd64.run`. It checks the signatures, then installs. |
+| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | Run it. It is signed through Microsoft Artifact Signing by the publisher “Meng Wang.” |
+| macOS 13 or later | [acf-0.4.0-beta.6-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-mac-universal.pkg) | Double-click it, follow the steps and enter an administrator password. The package is notarized by Apple. |
+| Linux (amd64) | [acf-0.4.0-beta.6-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-linux-amd64.run) | Open a terminal in the download folder and run `sh acf-0.4.0-beta.6-linux-amd64.run`. It checks the signatures, then installs. |
 
 The control panel opens by itself when installation is done. Later, open "ACF Control Panel" from the Start menu, Launchpad or the applications menu, or run `acf panel` in a terminal (macOS, Linux).
 

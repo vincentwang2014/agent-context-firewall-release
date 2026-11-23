@@ -57,7 +57,7 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 - 你同意以管理员身份运行的程序可以关掉 ACF；本机上的任何安全软件都是这样。
 - ACF 是一层防护，不应作为唯一的防护。
 
-完整清单见 [已知保护缺口](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/KNOWN_LIMITATIONS_zh.md)，每一条都写了对你的影响和你可以怎么做。
+完整清单见 [已知保护缺口](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/KNOWN_LIMITATIONS_zh.md)，每一条都写了对你的影响和你可以怎么做。
 
 ## 支持的 AI 工具和系统
 
@@ -69,20 +69,20 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 
 网页 AI（claude.ai、ChatGPT、DeepSeek、Gemini）：用 Chrome 或 Edge 的 ACF 浏览器扩展，检查你发送的消息和上传的文本文件。
 
-- ACF 的询问窗口目前只有 Windows 上有。在 Linux 和 macOS 上，规则要求询问用户时（包括要管理员权限的命令），Claude Code 在需要确认的权限模式下用它自己的确认框询问，其他情况多数改为拦下，对话里说明原因。
+- ACF 的询问窗口在 Windows、macOS 和 Linux 上都有。屏幕前没有人时（例如 AI 工具通过 SSH 运行），内容改为拦下，对话里说明原因。
 - macOS 版目前只在 Apple 芯片的 macOS 14 上测试过。
 
 计划接入：OpenClaw 等。需要支持别的 AI 工具，[告诉我们](mailto:agent.context.firewall@gmail.com)。
 
 ## 下载和安装
 
-**当前版本：[0.4.0-beta.5](../../releases/tag/v0.4.0-beta.5)（测试版）。** 这是早期测试版，给愿意试用并反馈的朋友。发布页有每个系统的安装步骤、签名指纹和本版的改动。
+**当前版本：[0.4.0-beta.6](../../releases/tag/v0.4.0-beta.6)（测试版）。** 这是早期测试版，给愿意试用并反馈的朋友。发布页有每个系统的安装步骤、签名指纹和本版的改动。
 
 | 系统 | 下载 | 安装 |
 |---|---|---|
-| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/ACF-Setup.exe) | 运行它。安装程序还没有微软代码签名，Windows 可能会提示风险。 |
-| macOS 13 及以上 | [acf-0.4.0-beta.5-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/acf-0.4.0-beta.5-mac-universal.pkg) | 双击，按提示操作，输入管理员密码。安装包经过 Apple 公证。 |
-| Linux（amd64） | [acf-0.4.0-beta.5-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.5/acf-0.4.0-beta.5-linux-amd64.run) | 在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.5-linux-amd64.run`。它先核对签名，再安装。 |
+| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | 运行它。安装程序经微软 Artifact Signing 签名，发布者为 “Meng Wang”。 |
+| macOS 13 及以上 | [acf-0.4.0-beta.6-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-mac-universal.pkg) | 双击，按提示操作，输入管理员密码。安装包经过 Apple 公证。 |
+| Linux（amd64） | [acf-0.4.0-beta.6-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-linux-amd64.run) | 在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.6-linux-amd64.run`。它先核对签名，再安装。 |
 
 装好后控制面板会自己打开。以后从开始菜单、启动台或应用菜单打开“ACF 控制面板”，也可以在终端运行 `acf panel`（macOS、Linux）。
 
