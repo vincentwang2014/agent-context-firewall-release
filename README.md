@@ -12,12 +12,12 @@ Agent Context Firewall (ACF) runs on your computer and sits at these handoff poi
 
 1. **You → agent:** the messages you send an agent are checked before they reach the AI model.
 2. **Files, tool results and retrieved content → agent:** files, command results, retrieval and other tool results an agent reads are checked before they reach the AI model; content with a problem isn't handed to the agent.
-3. **Parent agent → sub-agent:** the task a sub-agent is given is checked before it is handed over; what the sub-agent reads itself and what it hands back are checked too.
+3. **Parent agent → sub-agent:** the task a sub-agent is given is checked before it is handed over; what the sub-agent reads itself is checked too; what it hands back can be blocked only where the AI tool offers a check point (Claude Code: only in auto mode and for sub-agents that are not copies of the current conversation; Codex: recorded only).
 4. **Agent → outside:** commands an agent runs that send data out, external tool (MCP) arguments, URLs to open and search terms are checked before they run.
-5. **Risky operations:** commands that need administrator rights (`sudo`, `runas` and the like) are asked about before they run.
-6. **ACF itself:** an agent can't switch ACF off or get around it: commands and changes aimed at ACF are blocked in every case.
+5. **Risky operations:** commands that need administrator rights (`sudo`, `runas` and the like), when ACF recognizes them, are asked about before they run; where ACF can't ask, they are blocked; with "Record only" they are only recorded.
+6. **ACF itself:** commands by which an agent uses administrator rights to change ACF, or turns ACF off, are blocked in every handling mode when ACF recognizes them. For what it doesn't recognize, see "What ACF can't see" and the known limitations.
 
-**Basic protection:** the most dangerous content, such as keys and private keys, is blocked at every boundary in every handling mode, and can't be turned off.
+**Basic protection:** the most dangerous content, such as keys and private keys, is blocked in every handling mode wherever the AI tool hands it to ACF and lets ACF block it; for a key in a command that runs only on this computer with no sign of sending it out, ACF asks you first, or blocks where it can't ask. Basic-protection rules can't be turned off on their own; when you pause or turn off checking for an AI tool, they don't check there either.
 
 **Direction:** the goal is that each agent gets only the context it needs and is allowed to have. Today ACF checks content by rules at each boundary; judging by the agent's identity, task and data permissions (for example, whether a retrieved company document should go to this agent) will come with the SDK and the enterprise edition.
 
@@ -26,9 +26,9 @@ How far each AI tool goes at each boundary is shown in the control panel and in 
 ## Everything stays local, and everything is shown
 
 - All checks happen on your computer. ACF doesn't send content to us or to any third party, and doesn't keep conversation text.
-- Every block and ask is explained in the AI tool's conversation and recorded in the control panel's Inspection log, with an event number.
+- When ACF blocks or asks, it gives the AI tool the reason and records it in the control panel's Inspection log, with an event number. How the reason is shown is up to the AI tool: some fold it away, some leave it to the AI to tell you.
 - Each AI tool card in the control panel lists what is protected, what isn't covered yet, and why.
-- Rule packs and single rules can be switched on and off, and each AI tool can have its own handling (basic protection excepted).
+- Rule packs and single rules can be switched on and off, and each AI tool can have its own handling (basic protection excepted); pausing checks for an AI tool also pauses its basic protection.
 
 ## What ACF can't see
 
@@ -53,11 +53,11 @@ In these places, content may get into the AI model without passing through ACF. 
 Also:
 
 - ACF assumes the AI tool isn't malicious. Deliberately hidden commands, and a hijacked AI tool that hides what it does, are out of scope.
-- If ACF itself fails, content passes unchecked so your work isn't interrupted; the conversation shows a notice and the control panel offers a fix.
+- If ACF itself fails, in most cases content passes unchecked so your work isn't interrupted, usually with a notice in the conversation; in a few cases (for example when ACF can't read its installation records or rule packs) this release still blocks. See "When ACF itself fails" in the known limitations.
 - A program you allow to run as administrator can turn ACF off; that is true of any security software on the computer.
 - ACF is one layer of protection, not the only one to rely on.
 
-The full list is in the [known limitations](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/KNOWN_LIMITATIONS_en.md); each entry says what it means for you and what you can do.
+The full list is in the [known limitations](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/KNOWN_LIMITATIONS_en.md); each entry says what it means for you and what you can do.
 
 ## Supported AI tools and systems
 
@@ -76,13 +76,13 @@ Planned: OpenClaw and others. Need another AI tool supported? [Tell us](mailto:a
 
 ## Download and install
 
-**Current version: [0.4.0-beta.6](../../releases/tag/v0.4.0-beta.6) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
+**Current version: [0.4.0-beta.7](../../releases/tag/v0.4.0-beta.7) (beta).** This is an early beta, meant for friends willing to test it and send feedback. The release page has the install steps for each system, signature fingerprints and what changed in this version.
 
 | System | Download | Install |
 |---|---|---|
-| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | Run it. It is signed through Microsoft Artifact Signing by the publisher “Meng Wang.” |
-| macOS 13 or later | [acf-0.4.0-beta.6-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-mac-universal.pkg) | Double-click it, follow the steps and enter an administrator password. The package is notarized by Apple. |
-| Linux (amd64) | [acf-0.4.0-beta.6-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-linux-amd64.run) | Open a terminal in the download folder and run `sh acf-0.4.0-beta.6-linux-amd64.run`. It checks the signatures, then installs. |
+| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/ACF-Setup.exe) | Run it. It is signed through Microsoft Artifact Signing by the publisher “Meng Wang.” |
+| macOS 13 or later | [acf-0.4.0-beta.7-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/acf-0.4.0-beta.7-mac-universal.pkg) | Double-click it, follow the steps and enter an administrator password. The package is notarized by Apple. |
+| Linux (amd64) | [acf-0.4.0-beta.7-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/acf-0.4.0-beta.7-linux-amd64.run) | Open a terminal in the download folder and run `sh acf-0.4.0-beta.7-linux-amd64.run`. It checks the signatures, then installs. |
 
 The control panel opens by itself when installation is done. Later, open "ACF Control Panel" from the Start menu, Launchpad or the applications menu, or run `acf panel` in a terminal (macOS, Linux).
 

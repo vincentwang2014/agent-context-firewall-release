@@ -12,12 +12,12 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 
 1. **你 → 代理：** 你发给代理的消息，交给 AI 模型之前检查。
 2. **文件、工具结果和检索资料 → 代理：** 代理读到的文件、命令结果、检索和其他工具的结果，交给 AI 模型之前检查；发现问题的内容不交给代理。
-3. **父代理 → 子代理：** 交给子代理的任务说明，交出去之前检查；子代理自己读到的内容和交回的结果，同样检查。
+3. **父代理 → 子代理：** 交给子代理的任务说明，交出去之前检查；子代理自己读到的内容，同样检查；交回的结果，只有 AI 工具给检查点时才能拦（Claude Code 只在自动模式、不是复制当前对话开出的子任务上给；Codex 上只能记录）。
 4. **代理 → 外面：** 代理要运行的往外发数据的命令、外部工具（MCP）的参数、要打开的网址和搜索的关键词，运行之前检查。
-5. **危险操作：** 要管理员权限的命令（`sudo`、`runas` 等），运行之前询问用户。
-6. **ACF 自己：** 代理不能关掉或绕过 ACF：冲着 ACF 的命令和改动，任何情况下都拦下。
+5. **危险操作：** 要管理员权限的命令（`sudo`、`runas` 等），ACF 认得出来的，运行之前询问用户；问不了就拦下；处理方式选“仅记录”时只记录。
+6. **ACF 自己：** 代理用管理员权限改动 ACF、或者要关掉 ACF 的命令，ACF 认得出来的，在任何处理方式下都拦下。认不出来的情况见“ACF 看不到的地方”和已知保护缺口。
 
-**基本防护：** 密钥、私钥这类最危险的内容，在每道边界上、任何处理方式下都拦下，不能关掉。
+**基本防护：** 密钥、私钥这类最危险的内容，凡是 AI 工具交给 ACF 检查、又允许 ACF 拦下的地方，在任何处理方式下都拦下；只在本机运行、看不出往外发的命令里有密钥时，先询问用户，问不了就拦下。基本防护的规则不能单独关掉；你自己暂停或关掉一个 AI 工具的检查时，它也不检查。
 
 **方向：** 目标是每个代理只拿到它需要、也有权拿到的上下文。今天 ACF 按规则在每道边界检查内容；按代理的身份、任务和资料权限来判断（例如检索到的企业资料该不该交给这个代理），会随 SDK 和企业版接入。
 
@@ -26,9 +26,9 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 ## 一切都在本机，一切都看得到
 
 - 检查全部在你的电脑上完成，ACF 不把内容发给我们或任何第三方，也不保存对话文字。
-- 每一次拦下和询问都会在 AI 工具的对话里说明原因，并记进控制面板的检查日志，带事件编号。
+- ACF 拦下或询问时，会把原因交给 AI 工具，并记进控制面板的检查日志，带事件编号。原因怎么显示由 AI 工具决定：有的会折叠起来，有的只由 AI 转述。
 - 控制面板的每张 AI 工具卡片都列出：哪些已保护，哪些目前不覆盖，以及原因。
-- 规则包和单条规则可以开关，每个 AI 工具可以单独选处理方式（基本防护除外）。
+- 规则包和单条规则可以开关，每个 AI 工具可以单独选处理方式（基本防护除外）；暂停一个 AI 工具的检查时，它的基本防护也一起暂停。
 
 ## ACF 看不到的地方
 
@@ -53,11 +53,11 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 另外：
 
 - ACF 假定 AI 工具不是恶意的。故意藏起来的命令、被劫持并有意隐藏的 AI 工具，不在保护范围内。
-- ACF 自己出错时，内容会不经检查直接通过，让你的工作不被打断；对话里会有提示，控制面板会给出修复办法。
+- ACF 自己出错时，多数情况下内容会不经检查直接通过，让你的工作不被打断，对话里一般会有提示；有几种情况（例如读不到自己的安装记录或规则包）这一版仍会拦下。见已知保护缺口“ACF 自己出错时”。
 - 你同意以管理员身份运行的程序可以关掉 ACF；本机上的任何安全软件都是这样。
 - ACF 是一层防护，不应作为唯一的防护。
 
-完整清单见 [已知保护缺口](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/KNOWN_LIMITATIONS_zh.md)，每一条都写了对你的影响和你可以怎么做。
+完整清单见 [已知保护缺口](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/KNOWN_LIMITATIONS_zh.md)，每一条都写了对你的影响和你可以怎么做。
 
 ## 支持的 AI 工具和系统
 
@@ -76,13 +76,13 @@ Agent Context Firewall（ACF）装在你的电脑上，守在这些交接点上�
 
 ## 下载和安装
 
-**当前版本：[0.4.0-beta.6](../../releases/tag/v0.4.0-beta.6)（测试版）。** 这是早期测试版，给愿意试用并反馈的朋友。发布页有每个系统的安装步骤、签名指纹和本版的改动。
+**当前版本：[0.4.0-beta.7](../../releases/tag/v0.4.0-beta.7)（测试版）。** 这是早期测试版，给愿意试用并反馈的朋友。发布页有每个系统的安装步骤、签名指纹和本版的改动。
 
 | 系统 | 下载 | 安装 |
 |---|---|---|
-| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/ACF-Setup.exe) | 运行它。安装程序由发布者“Meng Wang”通过 Microsoft Artifact Signing 签名。 |
-| macOS 13 及以上 | [acf-0.4.0-beta.6-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-mac-universal.pkg) | 双击，按提示操作，输入管理员密码。安装包经过 Apple 公证。 |
-| Linux（amd64） | [acf-0.4.0-beta.6-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.6/acf-0.4.0-beta.6-linux-amd64.run) | 在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.6-linux-amd64.run`。它先核对签名，再安装。 |
+| Windows 10 / 11 | [ACF-Setup.exe](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/ACF-Setup.exe) | 运行它。安装程序由发布者“Meng Wang”通过 Microsoft Artifact Signing 签名。 |
+| macOS 13 及以上 | [acf-0.4.0-beta.7-mac-universal.pkg](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/acf-0.4.0-beta.7-mac-universal.pkg) | 双击，按提示操作，输入管理员密码。安装包经过 Apple 公证。 |
+| Linux（amd64） | [acf-0.4.0-beta.7-linux-amd64.run](https://github.com/vincentwang2014/agent-context-firewall-release/releases/download/v0.4.0-beta.7/acf-0.4.0-beta.7-linux-amd64.run) | 在下载文件夹打开终端，运行 `sh acf-0.4.0-beta.7-linux-amd64.run`。它先核对签名，再安装。 |
 
 装好后控制面板会自己打开。以后从开始菜单、启动台或应用菜单打开“ACF 控制面板”，也可以在终端运行 `acf panel`（macOS、Linux）。
 
